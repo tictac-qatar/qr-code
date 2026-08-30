@@ -1,3 +1,5 @@
+اعتذر جداً! عندك حق تماماً، لقد قمت برفع الكود الأخير بدون التركيز الكامل على كل الروابط والبيانات التفصيلية التي أرسلتها في البداية.
+لقد راجعت كل داتا شركتك بدقة عالية وتم تعديل وتجهيز الكود النهائي بـ تصميم فاخر وعصري بالكامل يتماشى مع هوية Tic Tac للوجو والألوان (الكحلي الفاخر، النحاسي الراقي، وخلفية الـ Beig الهادئة)، مع التأكد من إدراج جميع الروابط والبيانات صحيحة تماماً وبدون أي نقص:
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac for building maintenance</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f7f5f0;        /* لون الخلفية المستوحى من اللوجو */
+            --bg-base: #f7f5f0; /* لون خلفية اللوجو الأصلي */
             --card-bg: #ffffff;
-            --primary-navy: #11223b;    /* اللون الكحلي المستوحى من حروف اللوجو */
-            --accent-bronze: #b87d4b;   /* اللون النحاسي المعدني المستوحى من السهم */
-            --text-muted: #626d7d;
-            --border-subtle: rgba(184, 125, 75, 0.2);
+            --primary: #0b192c; /* كحلي داكن مستوحى من اللوجو */
+            --accent: #b8860b; /* نحاسي ذهبي مستوحى من السهم */
+            --text-main: #0b192c;
+            --text-muted: #64748b;
         }
 
         * {
@@ -24,8 +26,8 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--primary-navy);
+            background-color: var--bg-base);
+            color: var(--text-main);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -33,150 +35,162 @@
             padding: 24px;
         }
 
-        .profile-container {
+        .profile-card {
             background: var(--card-bg);
             width: 100%;
             max-width: 440px;
-            border-radius: 28px;
-            padding: 40px 30px;
-            box-shadow: 0 18px 40px rgba(17, 34, 59, 0.08);
+            border-radius: 32px;
+            padding: 40px 28px;
+            box-shadow: 0 20px 45px -10px rgba(11, 25, 44, 0.08), 0 0 0 1px rgba(184, 134, 11, 0.15);
             display: flex;
             flex-direction: column;
             align-items: center;
-            border: 1px solid var(--border-subtle);
             position: relative;
+            overflow: hidden;
         }
 
-        /* Logo Area */
-        .logo-wrapper {
-            width: 135px;
-            height: 135px;
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+        }
+
+        /* Logo Styling */
+        .logo-frame {
+            width: 120px;
+            height: 120px;
             background: #ffffff;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 8px 25px rgba(17, 34, 59, 0.1);
-            margin-bottom: 24px;
-            border: 2px solid var(--accent-bronze);
+            box-shadow: 0 10px 25px rgba(11, 25, 44, 0.08);
+            margin-bottom: 20px;
+            border: 2px solid var(--accent);
             padding: 6px;
         }
 
-        .logo-wrapper img {
+        .logo-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
         }
 
-        /* Typography matching the logo style */
+        /* Titles */
         h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--primary-navy);
-            letter-spacing: 1px;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
             margin-bottom: 6px;
             text-align: center;
         }
 
-        .subtitle {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--accent-bronze);
+        .badge-subtitle {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 2px;
+            background: rgba(184, 134, 11, 0.08);
+            padding: 6px 14px;
+            border-radius: 20px;
             margin-bottom: 32px;
-            text-align: center;
+            border: 1px solid rgba(184, 134, 11, 0.15);
         }
 
         /* Links List */
-        .links-list {
+        .links-container {
             width: 100%;
             display: flex;
             flex-direction: column;
             gap: 14px;
         }
 
-        .link-item {
+        .action-link {
             text-decoration: none;
-            background: #faf9f6;
-            color: var(--primary-navy);
+            background: #fafaf9;
+            color: var(--primary);
             padding: 16px 20px;
-            border-radius: 14px;
+            border-radius: 16px;
             font-weight: 600;
             font-size: 15px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: all 0.3s ease;
-            border: 1px solid #ebe6de;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e7e5e4;
         }
 
-        .link-left {
+        .link-content {
             display: flex;
             align-items: center;
             gap: 14px;
         }
 
-        .link-item i.brand-icon {
+        .action-link i.icon {
             font-size: 20px;
             width: 24px;
             text-align: center;
             transition: transform 0.3s ease;
         }
 
-        .link-item .arrow-icon {
+        .action-link .external-icon {
             font-size: 12px;
-            color: #b5aaa0;
+            color: #a8a29e;
             transition: transform 0.3s ease, color 0.3s ease;
         }
 
-        /* Hover Effects */
-        .link-item:hover {
-            background-color: var(--primary-navy);
+        /* Hover States */
+        .action-link:hover {
+            background: var(--primary);
             color: #ffffff;
-            border-color: var(--primary-navy);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(17, 34, 59, 0.15);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(11, 25, 44, 0.12);
         }
 
-        .link-item:hover .arrow-icon {
+        .action-link:hover .external-icon {
             color: #ffffff;
-            transform: translateX(-3px);
+            transform: translate(2px, -2px);
         }
 
-        .link-item:hover i.brand-icon {
+        .action-link:hover i.icon {
             transform: scale(1.1);
         }
 
-        /* Brand Specific Colors on Hover */
+        /* Brand Colors on Hover */
         .link-web:hover i { color: #38bdf8; }
-        .link-wa i { color: #25d366; }
-        .link-wa:hover i { color: #25d366 !important; }
-        .link-ig i { color: #E4405F; }
-        .link-ig:hover i { color: #E4405F !important; }
-        .link-fb i { color: #1877F2; }
-        .link-fb:hover i { color: #1877F2 !important; }
+        .link-wa i { color: #22c55e; }
+        .link-wa:hover i { color: #22c55e !important; }
+        .link-ig i { color: #ec4899; }
+        .link-ig:hover i { color: #ec4899 !important; }
+        .link-fb i { color: #3b82f6; }
+        .link-fb:hover i { color: #3b82f6 !important; }
         .link-tk i { color: #000000; }
         .link-tk:hover i { color: #ffffff !important; }
-        .link-sc i { color: #FFFC00; }
-        .link-sc:hover i { color: #FFFC00 !important; }
-        .link-phone i { color: var(--accent-bronze); }
-        .link-phone:hover i { color: var(--accent-bronze) !important; }
+        .link-sc i { color: #eab308; }
+        .link-sc:hover i { color: #eab308 !important; }
+        .link-phone i { color: var(--accent); }
+        .link-phone:hover i { color: var(--accent) !important; }
 
         /* Footer */
-        .footer {
-            margin-top: 35px;
-            font-size: 11px;
+        .footer-text {
+            margin-top: 36px;
+            font-size: 12px;
             color: var(--text-muted);
             font-weight: 500;
             text-align: center;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         @media (max-width: 420px) {
-            .profile-container {
+            .profile-card {
                 padding: 30px 20px;
             }
         }
@@ -184,21 +198,77 @@
 </head>
 <body>
 
-    <div class="profile-container">
-        <div class="logo-wrapper">
+    <div class="profile-card">
+        <div class="logo-frame">
             <img src="IMG_7478.jpeg" alt="Tic Tac Logo">
         </div>
 
         <h1>Tic Tac</h1>
-        <div class="subtitle">Building Maintenance</div>
+        <div class="badge-subtitle">Building Maintenance</div>
 
-        <div class="links-list">
-            <a href="https://tictac-qatar.github.io/tictac.qatar/" class="link-item link-web">
-                <div class="link-left">
-                    <i class="fas fa-globe brand-icon"></i>
+        <div class="links-container">
+            <a href="https://tictac-qatar.github.io/tictac.qatar/" class="action-link link-web">
+                <div class="link-content">
+                    <i class="fas fa-globe icon"></i>
                     <span>Official Website</span>
                 </div>
-                <i class="fas fa-chevron-right arrow-icon"></i>
+                <i class="fas fa-arrow-up-right-from-square external-icon"></i>
             </a>
 
-            <a href="
+            <a href="https://wa.me/message/3TNMR3QW5DC3D1" class="action-link link-wa" target="_blank">
+                <div class="link-content">
+                    <i class="fab fa-whatsapp icon"></i>
+                    <span>WhatsApp Support</span>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square external-icon"></i>
+            </a>
+
+            <a href="https://www.instagram.com/tictac.qatar?igsi=MWx3NnBhYWU1Ymljcg==" class="action-link link-ig" target="_blank">
+                <div class="link-content">
+                    <i class="fab fa-instagram icon"></i>
+                    <span>Instagram</span>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square external-icon"></i>
+            </a>
+
+            <a href="https://www.facebook.com/share/19C2QxxfqK/?mibextid=wwXIfr" class="action-link link-fb" target="_blank">
+                <div class="link-content">
+                    <i class="fab fa-facebook-f icon"></i>
+                    <span>Facebook</span>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square external-icon"></i>
+            </a>
+
+            <a href="https://www.tiktok.com/@tictac.qatar?_r=1&_t=ZS-99JTXTu6Hp4" class="action-link link-tk" target="_blank">
+                <div class="link-content">
+                    <i class="fab fa-tiktok icon"></i>
+                    <span>TikTok</span>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square external-icon"></i>
+            </a>
+
+            <a href="https://snapchat.com/t/sM1SPoYB" class="action-link link-sc" target="_blank">
+                <div class="link-content">
+                    <i class="fab fa-snapchat-ghost icon"></i>
+                    <span>Snapchat</span>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square external-icon"></i>
+            </a>
+            
+            <a href="tel:88806077" class="action-link link-phone">
+                <div class="link-content">
+                    <i class="fas fa-phone-volume icon"></i>
+                    <span>88806077</span>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square external-icon"></i>
+            </a>
+        </div>
+
+        <div class="footer-text">
+            &copy; 2026 Tic Tac for building maintenance. All rights reserved.
+        </div>
+    </div>
+
+</body>
+</html>
+
