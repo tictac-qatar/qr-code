@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Qatar - صيانة المباني</title>
+    <title>Tic Tac for building maintenance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #0f2d4a;
+            --accent-color: #c59b27;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -17,111 +27,137 @@
             margin: 0;
             padding: 20px;
         }
+
         .container {
-            background: #fff;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             text-align: center;
-            max-width: 500px;
+            max-width: 450px;
             width: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.04);
         }
+
         .logo {
-            max-width: 200px;
+            max-width: 160px;
+            height: auto;
             margin-bottom: 20px;
+            border-radius: 10px;
         }
+
         h1 {
-            color: #004080;
-            margin-bottom: 10px;
-            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 22px;
+            font-weight: 700;
         }
+
         p.subtitle {
-            color: #555;
+            color: var(--text-muted);
             margin-bottom: 30px;
-            font-size: 16px;
+            font-size: 15px;
+            font-weight: 500;
         }
+
         .link-list {
             list-style: none;
             padding: 0;
             margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
         }
-        .link-list li {
-            margin-bottom: 15px;
-        }
-        .link-list a {
-            display: block;
-            padding: 15px;
-            background-color: #007bff;
-            color: white;
+
+        .link-list a, .contact-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px 20px;
+            background-color: #ffffff;
+            color: var(--text-main);
             text-decoration: none;
-            border-radius: 8px;
-            transition: background-color 0.3s, transform 0.2s;
+            border-radius: 12px;
+            transition: all 0.3s ease;
             font-weight: 600;
-            font-size: 18px;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            border: 1px solid #edf2f7;
+            width: 100%;
+            box-sizing: border-box;
         }
-        .link-list a:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
+
+        .link-list a:hover, .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            border-color: transparent;
         }
-        .link-list a.whatsapp { background-color: #25d366; }
-        .link-list a.whatsapp:hover { background-color: #128c7e; }
-        .link-list a.instagram { background-color: #C13584; }
-        .link-list a.instagram:hover { background-color: #833AB4; }
-        .link-list a.facebook { background-color: #4267B2; }
-        .link-list a.facebook:hover { background-color: #365899; }
-        .link-list a.tiktok { background-color: #000000; }
-        .link-list a.tiktok:hover { background-color: #333333; }
-        .link-list a.snapchat { background-color: #FFFC00; color: #000; }
-        .link-list a.snapchat:hover { background-color: #e6e300; }
+
+        .link-list a i {
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Brand Specific Colors on Hover / Accent */
+        .link-list a.website:hover { background-color: #0f2d4a; color: #fff; }
+        .link-list a.whatsapp { color: #25d366; }
+        .link-list a.whatsapp:hover { background-color: #25d366; color: #fff; }
         
+        .link-list a.instagram { color: #E4405F; }
+        .link-list a.instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; border-color: transparent; }
+        
+        .link-list a.facebook { color: #1877F2; }
+        .link-list a.facebook:hover { background-color: #1877F2; color: #fff; }
+        
+        .link-list a.tiktok { color: #000000; }
+        .link-list a.tiktok:hover { background-color: #000000; color: #fff; }
+        
+        .link-list a.snapchat { color: #FFFC00; background-color: #fff; }
+        .link-list a.snapchat:hover { background-color: #FFFC00; color: #000; }
+
+        /* Contact Box styled identically to links */
         .contact-card {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #e9ecef;
-            border-radius: 10px;
+            background-color: #ffffff;
+            color: var(--text-main);
+            margin-top: 0;
+            cursor: pointer;
         }
-        .contact-card h3 {
-            margin-bottom: 10px;
-            font-size: 18px;
-            color: #004080;
+        .contact-card i {
+            color: var(--accent-color);
+            font-size: 20px;
         }
-        .contact-card p {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 0;
-        }
+
         footer {
-            margin-top: 40px;
-            font-size: 14px;
-            color: #888;
+            margin-top: 30px;
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 400;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <img src="logo.png" alt="Tic Tac Qatar Logo" class="logo">
-        <h1>Tic Tac Qatar - تك تاك</h1>
-        <p class="subtitle">صيانة المباني - Building Maintenance</p>
+        <img src="logo.png" alt="Tic Tac Logo" class="logo">
+        <h1>Tic Tac</h1>
+        <p class="subtitle">Tic Tac for building maintenance</p>
         
-        <ul class="link-list">
-            <li><a href="https://tictac-qatar.github.io/tictac.qatar/">🌐 زيارة موقعنا الإلكتروني</a></li>
-            <li><a href="https://wa.me/message/3TNMR3QW5DC3D1" class="whatsapp">💬 تواصل معنا عبر واتساب</a></li>
-            <li><a href="https://www.instagram.com/tictac.qatar?igsi=MWx3NnBhYWU1Ymljcg==" class="instagram">📸 تابعنا على إنستجرام</a></li>
-            <li><a href="https://www.facebook.com/share/19C2QxxfqK/?mibextid=wwXIfr" class="facebook">👍 تابعنا على فيسبوك</a></li>
-            <li><a href="https://www.tiktok.com/@tictac.qatar?_r=1&_t=ZS-99JTXTu6Hp4" class="tiktok">🎵 شاهدنا على تيك توك</a></li>
-            <li><a href="https://snapchat.com/t/sM1SPoYB" class="snapchat">👻 تابعنا على سناب شات</a></li>
-        </ul>
-
-        <div class="contact-card">
-            <h3>📱 رقم التواصل المباشر</h3>
-            <p dir="ltr">88806077</p>
-        </div>
-        
-        <footer>
-            © 2023 Tic Tac Qatar. جميع الحقوق محفوظة.
-        </footer>
-    </div>
-
-</body>
-</html>
+        <div class="link-list">
+            <a href="https://tictac-qatar.github.io/tictac.qatar/" class="website">
+                <i class="fa-solid fa-globe"></i> Official Website
+            </a>
+            <a href="https://wa.me/message/3TNMR3QW5DC3D1" class="whatsapp" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp Chat
+            </a>
+            <a href="https://www.instagram.com/tictac.qatar?igsi=MWx3NnBhYWU1Ymljcg==" class="instagram" target="_blank">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://www.facebook.com/share/19C2QxxfqK/?mibextid=wwXIfr" class="facebook" target="_blank">
+                <i class="fa-brands fa-facebook"></i> Facebook
+            </a>
+            <a href="https://www.tiktok.com/@tictac.qatar?_r=1&_t=ZS-99JTXTu6Hp4" class="tiktok" target="_blank">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+            </a>
+            <a href="https://snap
