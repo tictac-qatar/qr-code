@@ -1,163 +1,237 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac for building maintenance</title>
+    <title>Tic Tac | Building Maintenance</title>
+    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #0f2d4a;
-            --accent-color: #c59b27;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-main: #2d3748;
-            --text-muted: #718096;
+            --bg-color: #e0e5ec; /* Soft Neumorphic Background */
+            --primary-gradient: linear-gradient(145deg, #1e3c72, #2a5298); /* Deep Blue Gradient */
+            --text-color: #333;
+            --sub-text: #666;
+            --accent-gold: #d4af37;
+            --shadow: 6px 6px 12px #bec8d2, -6px -6px 12px #ffffff;
+            --inner-shadow: inset 6px 6px 12px #bec8d2, inset -6px -6px 12px #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-main);
+            color: var(--text-color);
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            margin: 0;
             padding: 20px;
         }
 
-        .container {
-            background: var(--card-bg);
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            max-width: 450px;
+        .main-container {
+            background: var(--bg-color);
             width: 100%;
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            max-width: 400px;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .logo {
-            max-width: 160px;
+        /* Logo Section */
+        .logo-container {
+            width: 140px;
+            height: 140px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+            padding: 10px;
+            position: relative;
+        }
+
+        .logo-container::after {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            opacity: 0.5;
+        }
+
+        .logo-container img {
+            max-width: 80%;
             height: auto;
-            margin-bottom: 20px;
-            border-radius: 10px;
         }
 
+        /* Text Info */
         h1 {
-            color: var(--primary-color);
-            margin-bottom: 5px;
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 5px;
         }
 
         p.subtitle {
-            color: var(--text-muted);
+            font-size: 14px;
+            color: var(--sub-text);
             margin-bottom: 30px;
-            font-size: 15px;
-            font-weight: 500;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
 
-        .link-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        /* Links Section */
+        .links-wrapper {
+            width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 18px;
         }
 
-        .link-list a, .contact-card {
+        .neo-btn {
+            text-decoration: none;
+            color: #fff;
+            background: var(--primary-gradient);
+            padding: 16px 25px;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            padding: 14px 20px;
-            background-color: #ffffff;
-            color: var(--text-main);
-            text-decoration: none;
-            border-radius: 12px;
             transition: all 0.3s ease;
-            font-weight: 600;
-            font-size: 16px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-            border: 1px solid #edf2f7;
+            box-shadow: var(--shadow);
+            border: none;
             width: 100%;
-            box-sizing: border-box;
-        }
-
-        .link-list a:hover, .contact-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-            border-color: transparent;
-        }
-
-        .link-list a i {
-            font-size: 20px;
-            width: 24px;
-            text-align: center;
-        }
-
-        /* Brand Specific Colors on Hover / Accent */
-        .link-list a.website:hover { background-color: #0f2d4a; color: #fff; }
-        .link-list a.whatsapp { color: #25d366; }
-        .link-list a.whatsapp:hover { background-color: #25d366; color: #fff; }
-        
-        .link-list a.instagram { color: #E4405F; }
-        .link-list a.instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; border-color: transparent; }
-        
-        .link-list a.facebook { color: #1877F2; }
-        .link-list a.facebook:hover { background-color: #1877F2; color: #fff; }
-        
-        .link-list a.tiktok { color: #000000; }
-        .link-list a.tiktok:hover { background-color: #000000; color: #fff; }
-        
-        .link-list a.snapchat { color: #FFFC00; background-color: #fff; }
-        .link-list a.snapchat:hover { background-color: #FFFC00; color: #000; }
-
-        /* Contact Box styled identically to links */
-        .contact-card {
-            background-color: #ffffff;
-            color: var(--text-main);
-            margin-top: 0;
             cursor: pointer;
         }
-        .contact-card i {
-            color: var(--accent-color);
+
+        .neo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 8px 8px 15px #bec8d2, -8px -8px 15px #ffffff;
+            background: linear-gradient(145deg, #2a5298, #1e3c72);
+        }
+
+        .neo-btn:active {
+            box-shadow: var(--inner-shadow);
+            transform: translateY(1px);
+        }
+
+        .neo-btn i {
             font-size: 20px;
         }
 
+        /* Specific Brand Colors (subtle accent on icon) */
+        .btn-whatsapp i { color: #25d366; }
+        .btn-instagram i { color: #e4405f; }
+        .btn-facebook i { color: #1877f2; }
+        .btn-tiktok i { color: #000; }
+        .btn-snapchat i { color: #fffc00; }
+        
+        /* Contact Info Box (Styled same as buttons) */
+        .contact-box {
+            margin-top: 18px;
+            background: #ffffff; /* Different base for contrast */
+            color: var(--primary-color);
+            padding: 16px 25px;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            border: 2px solid var(--accent-gold);
+            color: #1e3c72;
+        }
+        
+        .contact-box i {
+            color: var(--accent-gold);
+        }
+
+        /* Footer */
         footer {
-            margin-top: 30px;
-            font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 400;
+            margin-top: 40px;
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 420px) {
+            .main-container {
+                padding: 30px;
+            }
+            .logo-container {
+                width: 120px;
+                height: 120px;
+            }
+            h1 { font-size: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <img src="logo.png" alt="Tic Tac Logo" class="logo">
-        <h1>Tic Tac</h1>
-        <p class="subtitle">Tic Tac for building maintenance</p>
-        
-        <div class="link-list">
-            <a href="https://tictac-qatar.github.io/tictac.qatar/" class="website">
-                <i class="fa-solid fa-globe"></i> Official Website
+    <div class="main-container">
+        <!-- Logo -->
+        <div class="logo-container">
+            <!-- ضع رابط اللوجو الخاص بك هنا بدلاً من logo.png -->
+            <img src="logo.png" alt="Tic Tac Logo">
+        </div>
+
+        <!-- Company Info -->
+        <h1>TIC TAC</h1>
+        <p class="subtitle">Building Maintenance</p>
+
+        <!-- Links -->
+        <div class="links-wrapper">
+            <a href="https://tictac-qatar.github.io/tictac.qatar/" class="neo-btn btn-website">
+                <i class="fas fa-globe"></i> Visit Our Website
             </a>
-            <a href="https://wa.me/message/3TNMR3QW5DC3D1" class="whatsapp" target="_blank">
-                <i class="fa-brands fa-whatsapp"></i> WhatsApp Chat
+            <a href="https://wa.me/message/3TNMR3QW5DC3D1" class="neo-btn btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
             </a>
-            <a href="https://www.instagram.com/tictac.qatar?igsi=MWx3NnBhYWU1Ymljcg==" class="instagram" target="_blank">
-                <i class="fa-brands fa-instagram"></i> Instagram
+            <a href="https://www.instagram.com/tictac.qatar?igsi=MWx3NnBhYWU1Ymljcg==" class="neo-btn btn-instagram" target="_blank">
+                <i class="fab fa-instagram"></i> Follow on Instagram
             </a>
-            <a href="https://www.facebook.com/share/19C2QxxfqK/?mibextid=wwXIfr" class="facebook" target="_blank">
-                <i class="fa-brands fa-facebook"></i> Facebook
+            <a href="https://www.facebook.com/share/19C2QxxfqK/?mibextid=wwXIfr" class="neo-btn btn-facebook" target="_blank">
+                <i class="fab fa-facebook-f"></i> Like on Facebook
             </a>
-            <a href="https://www.tiktok.com/@tictac.qatar?_r=1&_t=ZS-99JTXTu6Hp4" class="tiktok" target="_blank">
-                <i class="fa-brands fa-tiktok"></i> TikTok
+            <a href="https://www.tiktok.com/@tictac.qatar?_r=1&_t=ZS-99JTXTu6Hp4" class="neo-btn btn-tiktok" target="_blank">
+                <i class="fab fa-tiktok"></i> Watch on TikTok
             </a>
-            <a href="https://snap
+            <a href="https://snapchat.com/t/sM1SPoYB" class="neo-btn btn-snapchat" target="_blank">
+                <i class="fab fa-snapchat-ghost"></i> Add on Snapchat
+            </a>
+            
+            <!-- Contact Box (Same size as buttons) -->
+            <div class="contact-box">
+                <i class="fas fa-phone-alt"></i>
+                <span>88806077</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            &copy; 2026 Tic Tac for building maintenance. All rights reserved.
+        </footer>
+    </div>
+
+</body>
+</html>
