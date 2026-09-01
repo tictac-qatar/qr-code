@@ -1,293 +1,544 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl" id="htmlTag">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac for building maintenance</title>
-    <!-- FontAwesome for official brand icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts for Lusail and Plus Jakarta Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title id="pageTitle">Tic Tac for Building Maintenance | صيانة المباني في قطر</title>
+    <!-- خط Tajawal الاحترافي المتناسق مع الهوية -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* استيراد خط لوسيل الرسمي (Lusail Font) */
-        @font-face {
-            font-family: 'Lusail';
-            src: url('https://db.onlinewebfonts.com/t/d7c4885068a0a03bb7800040e34c2070.woff2') format('woff2'),
-                 url('https://db.onlinewebfonts.com/t/d7c4885068a0a03bb7800040e34c2070.woff') format('woff');
-            font-weight: 700;
-            font-style: normal;
-        }
-
         :root {
-            --bg-color: #f7f5f0;        /* لون الخلفية المستوحى من اللوجو */
+            --bg-body: #faf9f6;
+            --primary-dark: #121c2c;
             --card-bg: #ffffff;
-            --primary-navy: #11223b;    /* اللون الكحلي المستوحى من حروف اللوجو */
-            --accent-bronze: #b87d4b;   /* اللون النحاسي المعدني المستوحى من السهم */
-            --text-muted: #626d7d;
-            --border-subtle: rgba(184, 125, 75, 0.2);
+            --accent-gold: #dfcca6;
+            --whatsapp: #25D366;
+            --call-color: #0284c7;
+            --text-main: #121c2c;
+            --text-muted: #64748b;
+            --border-color: #f1f1f1;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--primary-navy);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 24px;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
         }
 
-        .profile-container {
-            background: var(--card-bg);
-            width: 100%;
-            max-width: 440px;
-            border-radius: 28px;
-            padding: 40px 30px;
-            box-shadow: 0 18px 40px rgba(17, 34, 59, 0.08);
+        /* الهيدر العصري الفخم */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 40px;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            border: 1px solid var(--border-subtle);
-            position: relative;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
 
-        /* Logo Area */
-        .logo-wrapper {
-            width: 135px;
-            height: 135px;
-            background: #ffffff;
-            border-radius: 50%;
+        .logo-container {
             display: flex;
-            justify-content: center;
             align-items: center;
-            box-shadow: 0 8px 25px rgba(17, 34, 59, 0.1);
-            margin-bottom: 24px;
-            border: 2px solid var(--accent-bronze);
-            padding: 6px;
+            gap: 12px;
         }
 
-        .logo-wrapper img {
-            width: 100%;
-            height: 100%;
+        .logo-container img {
+            height: 48px;
+            width: 48px;
             object-fit: cover;
             border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        /* Typography using Lusail font and Navy Color */
-        h1 {
-            font-family: 'Lusail', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary-navy);
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-            text-align: center;
-            text-transform: uppercase;
+        .logo-title {
+            font-size: 19px;
+            font-weight: 900;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
         }
 
-        .subtitle {
-            font-family: 'Lusail', sans-serif;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--primary-navy);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 32px;
-            text-align: center;
-        }
-
-        /* Links List */
-        .links-list {
-            width: 100%;
+        .header-actions {
             display: flex;
-            flex-direction: column;
-            gap: 14px;
+            align-items: center;
+            gap: 12px;
         }
 
-        .link-item {
+        .lang-select {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            cursor: pointer;
+            outline: none;
+            transition: 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .lang-select:hover {
+            border-color: var(--accent-gold);
+        }
+
+        /* أزرار التواصل في الهيدر */
+        .contact-btns {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-header-wa, .btn-header-call {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 50px;
             text-decoration: none;
-            background: #faf9f6;
-            color: var(--primary-navy);
-            padding: 16px 20px;
+            font-weight: 800;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .btn-header-wa {
+            background: #f0fdf4;
+            color: var(--whatsapp);
+            border: 1px solid #bbf7d0;
+        }
+
+        .btn-header-wa:hover {
+            background: var(--whatsapp);
+            color: #fff;
+        }
+
+        .btn-header-call {
+            background: #f0f9ff;
+            color: var(--call-color);
+            border: 1px solid #bae6fd;
+        }
+
+        .btn-header-call:hover {
+            background: var(--call-color);
+            color: #fff;
+        }
+
+        /* الواجهة الرئيسية Hero */
+        .hero {
+            background: var(--bg-body);
+            text-align: center;
+            padding: 110px 20px 80px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+            color: var(--primary-dark);
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 20px;
+            font-weight: 900;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
+            color: var(--primary-dark);
+        }
+
+        .hero h1 span {
+            color: var(--primary-dark);
+        }
+
+        .hero p {
+            font-size: 17px;
+            margin-bottom: 35px;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 500;
+        }
+
+        /* أزرار التواصل الكبيرة في الواجهة */
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-main-whatsapp, .btn-main-call {
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 800;
             border-radius: 14px;
-            font-weight: 600;
-            font-size: 15px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-main-whatsapp {
+            background: var(--card-bg);
+            color: var(--primary-dark);
+        }
+
+        .btn-main-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            border-color: #cbd5e1;
+        }
+
+        .btn-main-call {
+            background: var(--primary-dark);
+            color: #ffffff;
+            border-color: var(--primary-dark);
+        }
+
+        .btn-main-call:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* قسم الخدمات */
+        .services {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .section-header {
+            margin-bottom: 45px;
+        }
+
+        .services h2 {
+            font-size: 34px;
+            margin-bottom: 10px;
+            font-weight: 900;
+            color: var(--primary-dark);
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 24px 20px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            text-align: inherit;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: all 0.3s ease;
-            border: 1px solid #ebe6de;
         }
 
-        .link-left {
+        .service-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            border-color: #cbd5e1;
+        }
+
+        .service-content-wrapper {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 15px;
         }
 
-        .link-item i.brand-icon {
-            font-size: 20px;
+        .service-icon {
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 24px;
             text-align: center;
-            transition: transform 0.3s ease;
         }
 
-        .link-item .arrow-icon {
-            font-size: 12px;
-            color: #b5aaa0;
-            transition: transform 0.3s ease, color 0.3s ease;
+        .service-card h3 {
+            color: var(--primary-dark);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 0;
         }
 
-        /* Hover Effects */
-        .link-item:hover {
-            background-color: var(--primary-navy);
-            color: #ffffff;
-            border-color: var(--primary-navy);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(17, 34, 59, 0.15);
+        .service-card p {
+            display: none;
         }
 
-        .link-item:hover .arrow-icon {
-            color: #ffffff;
-            transform: translateX(-3px);
+        .card-arrow {
+            font-size: 14px;
+            color: #94a3b8;
+            font-weight: bold;
         }
 
-        .link-item:hover i.brand-icon {
-            transform: scale(1.1);
-        }
-
-        /* Brand Specific Colors on Hover */
-        .link-web:hover i { color: #38bdf8; }
-        .link-join:hover i { color: #f59e0b; }
-        .link-wa i { color: #25d366; }
-        .link-wa:hover i { color: #25d366 !important; }
-        .link-ig i { color: #E4405F; }
-        .link-ig:hover i { color: #E4405F !important; }
-        .link-fb i { color: #1877F2; }
-        .link-fb:hover i { color: #1877F2 !important; }
-        .link-tk i { color: #000000; }
-        .link-tk:hover i { color: #ffffff !important; }
-        .link-sc i { color: #FFFC00; }
-        .link-sc:hover i { color: #FFFC00 !important; }
-        .link-phone i { color: var(--accent-bronze); }
-        .link-phone:hover i { color: var(--accent-bronze) !important; }
-
-        /* Footer */
-        .footer {
-            margin-top: 35px;
-            font-size: 11px;
-            color: var(--text-muted);
-            font-weight: 500;
+        /* الفوتر */
+        footer {
+            background: var(--primary-dark);
+            color: white;
             text-align: center;
-            letter-spacing: 0.5px;
+            padding: 40px 20px;
+            margin-top: 70px;
         }
 
-        @media (max-width: 420px) {
-            .profile-container {
-                padding: 30px 20px;
+        footer p {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        .footer-info {
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        /* التجاوب مع الجوال */
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 15px;
+                flex-direction: column;
+                gap: 12px;
+            }
+            .hero {
+                padding: 70px 15px 50px;
+            }
+            .hero h1 {
+                font-size: 26px;
+            }
+            .hero p {
+                font-size: 14px;
+            }
+            .logo-title {
+                font-size: 16px;
+            }
+            .hero-cta {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .btn-main-whatsapp, .btn-main-call {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="profile-container">
-        <!-- Logo -->
-        <div class="logo-wrapper">
-            <img src="IMG_7478.jpeg" alt="Tic Tac Logo">
+    <!-- الهيدر -->
+    <header>
+        <div class="logo-container">
+            <img src="IMG_7425.jpeg" alt="Tic Tac Logo" onerror="this.style.display='none'">
+            <div class="logo-title" id="brandName">Tic Tac for Building Maintenance</div>
         </div>
-
-        <!-- Company Information -->
-        <h1>TIC TAC</h1>
-        <div class="subtitle">Building Maintenance</div>
-
-        <!-- Action Links -->
-        <div class="links-list">
-            <!-- Website -->
-            <a href="https://tictac-qatar.github.io/tictac.qatar/" class="link-item link-web">
-                <div class="link-left">
-                    <i class="fas fa-globe brand-icon"></i>
-                    <span>Official Website</span>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon"></i>
-            </a>
-
-            <!-- WhatsApp -->
-            <a href="https://wa.me/message/3TNMR3QW5DC3D1" class="link-item link-wa" target="_blank">
-                <div class="link-left">
-                    <i class="fab fa-whatsapp brand-icon"></i>
-                    <span>WhatsApp Support</span>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon"></i>
-            </a>
-
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/tictac.qatar?igsi=MWx3NnBhYWU1Ymljcg==" class="link-item link-ig" target="_blank">
-                <div class="link-left">
-                    <i class="fab fa-instagram brand-icon"></i>
-                    <span>Instagram</span>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon"></i>
-            </a>
-
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/share/19C2QxxfqK/?mibextid=wwXIfr" class="link-item link-fb" target="_blank">
-                <div class="link-left">
-                    <i class="fab fa-facebook-f brand-icon"></i>
-                    <span>Facebook</span>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon"></i>
-            </a>
-
-            <!-- TikTok -->
-            <a href="https://www.tiktok.com/@tictac.qatar?_r=1&_t=ZS-99JTXTu6Hp4" class="link-item link-tk" target="_blank">
-                <div class="link-left">
-                    <i class="fab fa-tiktok brand-icon"></i>
-                    <span>TikTok</span>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon"></i>
-            </a>
-
-            <!-- Snapchat -->
-            <a href="https://snapchat.com/t/sM1SPoYB" class="link-item link-sc" target="_blank">
-                <div class="link-left">
-                    <i class="fab fa-snapchat-ghost brand-icon"></i>
-                    <span>Snapchat</span>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon"></i>
-            </a>
-
-            <!-- Join Us -->
-            <a href="https://tictac-qatar.github.io/-/" class="link-item link-join" target="_blank">
-                <div class="link-left">
-                    <i class="fas fa-users brand-icon" style="color: #b87d4b;"></i>
-                    <span>Join Us</span>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon"></i>
-            </a>
-            
-            <!-- Direct Phone Number -->
-            <a href="tel:66608077" class="link-item link-phone">
-                <div class="link-left">
-                    <i class="fas fa-phone-volume brand-icon"></i>
-                    <span>66608077</span>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon"></i>
-            </a>
+        <div class="header-actions">
+            <select id="languageSelect" class="lang-select" onchange="changeLanguage(this.value)">
+                <option value="ar">العربية 🇸🇦</option>
+                <option value="en">English 🇬🇧</option>
+                <option value="ur">اردو 🇵🇰</option>
+            </select>
+            <div class="contact-btns">
+                <a href="https://api.whatsapp.com/send?phone=97466608077" target="_blank" class="btn-header-wa" id="waHeaderLink">
+                    <span>💬 واتساب</span>
+                </a>
+                <a href="tel:+97466608077" class="btn-header-call" id="callHeaderLink">
+                    <span>📞 اتصال</span>
+                </a>
+            </div>
         </div>
+    </header>
 
-        <!-- Footer -->
-        <div class="footer">
-            &copy; 2026 Tic Tac for building maintenance. All rights reserved.
+    <!-- الواجهة الرئيسية -->
+    <section class="hero">
+        <div class="hero-badge" id="heroBadge">✨ رواد صيانة المباني في دولة قطر</div>
+        <h1 id="heroTitle"><span>صيانة المباني</span> والخدمات المتكاملة في قطر.. بسرعة ودقة على أصولها!</h1>
+        <p id="heroDesc">شركة <strong>Tic Tac for Building Maintenance</strong> شريكك الهندسي المعتمد لكل أعمال الصيانة، التشطيبات، والخدمات الفنية. فريق احترافي جاهز لخدمتك بأعلى المعايير.</p>
+        <div class="hero-cta">
+            <a href="https://api.whatsapp.com/send?phone=97466608077" class="btn-main-whatsapp" target="_blank" id="whatsappBtn">💬 راسلنا عبر واتساب</a>
+            <a href="tel:+97466608077" class="btn-main-call" id="callBtn">📞 اتصال مباشر الآن</a>
         </div>
-    </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section class="services">
+        <div class="section-header">
+            <h2 id="servicesHeading">خدماتنا الاحترافية</h2>
+            <p class="section-subtitle" id="servicesSub">نقدم حلولاً هندسية متكاملة بأعلى معايير الجودة والكفاءة المعتمدة</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-content-wrapper">
+                    <div class="service-icon">🏢</div>
+                    <h3 id="srv1Title">صيانة المباني الشاملة</h3>
+                </div>
+                <span class="card-arrow">›</span>
+                <p id="srv1Desc">حلول شاملة لكل الأعطال اليومية والمؤسسية بسرعة وكفاءة عالية.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-content-wrapper">
+                    <div class="service-icon">🔧</div>
+                    <h3 id="srv2Title">السباكة والأدوات الصحية</h3>
+                </div>
+                <span class="card-arrow">›</span>
+                <p id="srv2Desc">كشف التسربات، التمديدات، وصيانة الشبكات الصحية بدقة.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-content-wrapper">
+                    <div class="service-icon">⚡</div>
+                    <h3 id="srv3Title">الكهرباء والإضاءة</h3>
+                </div>
+                <span class="card-arrow">›</span>
+                <p id="srv3Desc">تمديدات آمنة، لوحات التحكم، ومعالجة الأعطال المفاجئة.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-content-wrapper">
+                    <div class="service-icon">🛠️</div>
+                    <h3 id="srv4Title">التشطيبات والديكورات</h3>
+                </div>
+                <span class="card-arrow">›</span>
+                <p id="srv4Desc">أعمال الصيانة الدورية، الدهانات، والتطوير المعماري الداخلي.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <p class="footer-info" id="footerInfo">📍 دولة قطر | 📱 هاتف / واتساب: 66608077 | ✉️ tictac.qatar@gmail.com</p>
+        <p style="margin-top: 8px; font-size: 13px;" id="footerCopy">جميع الحقوق محفوظة لشركة Tic Tac for Building Maintenance © 2026</p>
+    </footer>
+
+    <!-- سكربت اللغات -->
+    <script>
+        const translations = {
+            ar: {
+                dir: "rtl",
+                title: "Tic Tac for Building Maintenance | صيانة المباني في قطر",
+                brandName: "Tic Tac for Building Maintenance",
+                heroBadge: "✨ رواد صيانة المباني في دولة قطر",
+                heroTitle: "<span>صيانة المباني</span> والخدمات المتكاملة في قطر.. بسرعة ودقة على أصولها!",
+                heroDesc: "شركة <strong>Tic Tac for Building Maintenance</strong> شريكك الهندسي المعتمد لكل أعمال الصيانة، التشطيبات، والخدمات الفنية. فريق احترافي جاهز لخدمتك بأعلى المعايير.",
+                whatsappBtn: "💬 راسلنا عبر واتساب",
+                callBtn: "📞 اتصال مباشر الآن",
+                servicesHeading: "خدماتنا الاحترافية",
+                servicesSub: "نقدم حلولاً هندسية متكاملة بأعلى معايير الجودة والكفاءة المعتمدة",
+                srv1Title: "صيانة المباني الشاملة",
+                srv1Desc: "حلول شاملة لكل الأعطال اليومية والمؤسسية بسرعة وكفاءة عالية.",
+                srv2Title: "السباكة والأدوات الصحية",
+                srv2Desc: "كشف التسربات، التمديدات، وصيانة الشبكات الصحية بدقة.",
+                srv3Title: "الكهرباء والإضاءة",
+                srv3Desc: "تمديدات آمنة، لوحات التحكم، ومعالجة الأعطال المفاجئة.",
+                srv4Title: "التشطيبات والديكورات",
+                srv4Desc: "أعمال الصيانة الدورية، الدهانات، والتطوير المعماري الداخلي.",
+                footerInfo: "📍 دولة قطر | 📱 هاتف / واتساب: 66608077 | ✉️ tictac.qatar@gmail.com",
+                footerCopy: "جميع الحقوق محفوظة لشركة Tic Tac for Building Maintenance © 2026"
+            },
+            en: {
+                dir: "ltr",
+                title: "Tic Tac for Building Maintenance | Building Maintenance in Qatar",
+                brandName: "Tic Tac for Building Maintenance",
+                heroBadge: "✨ Leaders in Building Maintenance in Qatar",
+                heroTitle: "<span>Building Maintenance</span> & Integrated Services in Qatar.. Fast & Reliable!",
+                heroDesc: "<strong>Tic Tac for Building Maintenance</strong> is your trusted engineering partner for building maintenance, fit-outs, and technical solutions 24/7.",
+                whatsappBtn: "💬 Chat on WhatsApp",
+                callBtn: "📞 Call Direct Now",
+                servicesHeading: "Our Professional Services",
+                servicesSub: "Providing integrated engineering solutions with the highest quality standards",
+                srv1Title: "Comprehensive Building Maintenance",
+                srv1Desc: "Comprehensive solutions for daily and institutional maintenance with high efficiency.",
+                srv2Title: "Plumbing & Sanitary",
+                srv2Desc: "Leak detection, piping, and accurate maintenance of sanitary networks.",
+                srv3Title: "Electrical & Lighting",
+                srv3Desc: "Safe wiring, control panels, and immediate troubleshooting.",
+                srv4Title: "Finishing & Decor",
+                srv4Desc: "Periodic maintenance, painting, and interior architectural development.",
+                footerInfo: "📍 State of Qatar | 📱 Phone / WhatsApp: 66608077 | ✉️ tictac.qatar@gmail.com",
+                footerCopy: "All Rights Reserved to Tic Tac for Building Maintenance © 2026"
+            },
+            ur: {
+                dir: "ltr",
+                title: "Tic Tac for Building Maintenance | قطر میں عمارت کی دیکھ بھال",
+                brandName: "Tic Tac for Building Maintenance",
+                heroBadge: "✨ قطر میں عمارت کی دیکھ بھال کے پیش پیش",
+                heroTitle: "<span>بلڈنگ مینٹیننس</span> اور جامع خدمات قطر میں.. تیز اور قابل اعتماد!",
+                heroDesc: "<strong>Tic Tac for Building Maintenance</strong> عمارت کی دیکھ بھال، مرمت اور تکنیکی حل کے لیے آپ کا قابل اعتماد پارٹنر ہے۔",
+                whatsappBtn: "💬 واٹس ایپ پر بات کریں",
+                callBtn: "📞 ابھی کال کریں",
+                servicesHeading: "ہماری پیشہ ورانہ خدمات",
+                servicesSub: "اعلیٰ ترین معیار کے ساتھ جامع انجینئرنگ حل فراہم کرنا",
+                srv1Title: "جامع عمارت کی دیکھ بھال",
+                srv1Desc: "روزمرہ کے مسائل کے لیے جامع اور تیز ترین حل۔",
+                srv2Title: "پلمبنگ اور سینیٹری",
+                srv2Desc: "لیکج کا پتہ لگانا، پائپنگ اور سینیٹری نیٹ ورک کی دیکھ بھال۔",
+                srv3Title: "بجلی اور لائٹنگ",
+                srv3Desc: "محفوظ وائرنگ، کنٹرول پینلز اور فوری فالت ٹربل شوٹنگ۔",
+                srv4Title: "فنشنگ اور سجاوٹ",
+                srv4Desc: "باقاعدہ دیکھ بھال، پینٹنگ اور اندرونی آرکیٹেকচারل ترقی۔",
+                footerInfo: "📍 قطر | 📱 فون / واٹس ایپ: 66608077 | ✉️ tictac.qatar@gmail.com",
+                footerCopy: "جملہ حقوق محفوظ ہیں Tic Tac for Building Maintenance © 2026"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const t = translations[lang];
+            document.getElementById('htmlTag').setAttribute('lang', lang);
+            document.getElementById('htmlTag').setAttribute('dir', t.dir);
+            document.getElementById('pageTitle').innerText = t.title;
+            document.getElementById('brandName').innerText = t.brandName;
+            document.getElementById('heroBadge').innerText = t.heroBadge;
+            document.getElementById('heroTitle').innerHTML = t.heroTitle;
+            document.getElementById('heroDesc').innerHTML = t.heroDesc;
+            document.getElementById('whatsappBtn').innerText = t.whatsappBtn;
+            document.getElementById('callBtn').innerText = t.callBtn;
+            document.getElementById('servicesHeading').innerText = t.servicesHeading;
+            document.getElementById('servicesSub').innerText = t.servicesSub;
+            document.getElementById('srv1Title').innerText = t.srv1Title;
+            document.getElementById('srv1Desc').innerText = t.srv1Desc;
+            document.getElementById('srv2Title').innerText = t.srv2Title;
+            document.getElementById('srv2Desc').innerText = t.srv2Desc;
+            document.getElementById('srv3Title').innerText = t.srv3Title;
+            document.getElementById('srv3Desc').innerText = t.srv3Desc;
+            document.getElementById('srv4Title').innerText = t.srv4Title;
+            document.getElementById('srv4Desc').innerText = t.srv4Desc;
+            document.getElementById('footerInfo').innerText = t.footerInfo;
+            document.getElementById('footerCopy').innerText = t.footerCopy;
+        }
+    </script>
 
 </body>
 </html>
